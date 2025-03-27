@@ -1,0 +1,243 @@
+/* GENERAL */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(to bottom, #001c2e, #000000);
+  color: #00ccff;
+}
+
+.App-wrapper {
+  position: relative;
+}
+
+.App {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+/* PANTALLA DE INICIO */
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+  padding: 20px;
+  gap: 20px;
+}
+
+.start-image {
+  width: 280px;
+  max-width: 80%;
+  margin-bottom: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.6);
+}
+
+.play-button {
+  padding: 12px 24px;
+  font-size: 1.2rem;
+  background-color: #00ccff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.play-button:hover {
+  background-color: #00aacc;
+  transform: scale(1.05);
+}
+
+/* TÍTULO DEL JUEGO */
+.game-title {
+  font-family: 'Creepster', cursive;
+  font-size: 2.2rem;
+  color: #00ccff;
+  text-shadow: 0 0 5px #00ccff, 0 0 10px #00ccff;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+
+/* SCOREBOARD */
+.scoreboard-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.score-box {
+  background-color: #002233;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 2px solid #00e0ff;
+  color: #00e0ff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 0 6px rgba(0, 224, 255, 0.3);
+}
+
+.label {
+  font-size: 0.85rem;
+  margin: 0;
+  font-weight: 500;
+}
+
+.value {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* CARTAS */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  background-color: #eef9ff;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 2px solid #00ccff;
+  box-shadow: 0 0 8px rgba(0, 204, 255, 0.4);
+}
+
+.card p {
+  margin-top: 8px;
+  font-weight: bold;
+  color: #003344;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+/* EFECTOS Y ANIMACIONES */
+.card.correct {
+  box-shadow: 0 0 12px 4px rgba(0, 255, 0, 0.8);
+}
+
+.card.incorrect {
+  box-shadow: 0 0 12px 4px rgba(255, 0, 0, 0.8);
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+/* DESENFOQUE CUANDO TERMINA EL JUEGO */
+.blurred {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+
+/* MODALES WIN / LOSE */
+.end-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: fadeIn 0.4s ease;
+}
+
+.end-modal-content {
+  background-color: #001f2f;
+  border: 2px solid #00ccff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  text-align: center;
+  color: #00ccff;
+  box-shadow: 0 0 20px rgba(0, 204, 255, 0.4);
+  width: 90%;
+  max-width: 400px;
+}
+
+.end-modal-content h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.end-modal-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.end-modal-content button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #00ccff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #000;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.end-modal-content button:hover {
+  transform: scale(1.05);
+  background-color: #00aacc;
+}
+
+/* GANASTE EFECTO */
+.end-modal.win {
+  background: radial-gradient(circle at center, #00ccff 0%, #000 100%);
+  animation: winFlash 1s ease-in-out infinite;
+}
+
+@keyframes winFlash {
+  0% { background-color: #00ccff; }
+  50% { background-color: #005577; }
+  100% { background-color: #00ccff; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* CONTENEDOR SOLO PARA DESKTOP */
+.card-container-desktop {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  width: fit-content;
+  margin: 30px auto 50px; /* centrado horizontal */
+  padding: 0 20px;
+  justify-content: center;
+}
+
